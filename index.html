@@ -3,26 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Búsqueda</title>
-	<style>
-        /* Estilo para ocultar la tabla */
-        #tablaDatos {
-            display: none;
-        }
-    </style>
+    <title>Tabla de Datos</title>
+    <!-- Agrega tus estilos CSS aquí si es necesario -->
 </head>
 <body>
-    <h1>Formulario de Búsqueda</h1>
-    <form id="searchForm">
-        <label for="searchInput">Buscar por número de certificado:</label>
-        <input type="text" id="searchInput" placeholder="Ingresa el número de certificado">
-        <button type="button" onclick="buscarDatos()">Consultar</button>
-    </form>
-
-    <div id="resultadoBusqueda"></div>
-
-	<div hidden>
-    <table id="tablaDatos">
+    <h1>Tabla de Datos</h1>
+<table id="tablaDatos">
         <thead>
             <tr>
                 <th>Certificado</th>
@@ -77,32 +63,5 @@
             <!-- Agrega más filas de datos aquí -->
         </tbody>
     </table>
-</div>
-	
-    <script>
-        function buscarDatos() {
-            const inputTexto = document.getElementById("searchInput").value.toUpperCase();
-            const filas = document.querySelectorAll("#tablaDatos tbody tr");
-            let encontrado = false;
-
-            filas.forEach((fila) => {
-                const certificado = fila.querySelector("td:first-child").textContent.toUpperCase();
-                if (certificado.includes(inputTexto)) {
-                    const nombre = fila.querySelector("td:nth-child(2)").textContent.toUpperCase();
-                    const cedula = fila.querySelector("td:nth-child(3)").textContent;
-					const curso = fila.querySelector("td:nth-child(4)").textContent;
-                    const horas = fila.querySelector("td:nth-child(5)").textContent;
-                    const fecha = fila.querySelector("td:nth-child(6)").textContent;
-                    const mensaje = `${nombre}, CI Nro. ${cedula} aprobó el curso/taller ${curso} de ${horas} horas académicas en la fecha: ${fecha}.`;
-                    document.getElementById("resultadoBusqueda").textContent = mensaje;
-                    encontrado = true;
-                }
-            });
-
-            if (!encontrado) {
-                document.getElementById("resultadoBusqueda").textContent = "Usuario no encontrado.";
-            }
-        }
-    </script>
 </body>
 </html>
