@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Datos</title>
+    <!-- Agrega tus estilos CSS aquí si es necesario -->
+</head>
+<body>
+    <h1>Tabla de Datos</h1>
+    <table id="tablaDatos">
+        <thead>
+            <tr>
+                <th>Identificación</th>
+                <th>Nombre</th>
+                <th>Curso</th>
+                <th>Horas</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aquí se llenarán los datos -->
+        </tbody>
+    </table>
+
+    <script>
+        // Datos ficticios (puedes obtenerlos de tu fuente real)
+        const datos = [
+            { identificacion: 1, nombre: 'Juan Pérez', curso: 'Matemáticas', horas: 20, fecha: '2024-03-18' },
+            { identificacion: 2, nombre: 'María Gómez', curso: 'Historia', horas: 15, fecha: '2024-03-19' },
+            // ... más datos ...
+        ];
+
+        // Obtén la referencia al cuerpo de la tabla
+        const tablaBody = document.querySelector('#tablaDatos tbody');
+
+        // Llena la tabla con los datos
+        datos.forEach((dato) => {
+            const fila = document.createElement('tr');
+            fila.innerHTML = `
+                <td>${dato.identificacion}</td>
+                <td>${dato.nombre}</td>
+                <td>${dato.curso}</td>
+                <td>${dato.horas}</td>
+                <td>${dato.fecha}</td>
+            `;
+            tablaBody.appendChild(fila);
+        });
+    </script>
+</body>
+</html>
