@@ -8,60 +8,49 @@
 </head>
 <body>
     <h1>Tabla de Datos</h1>
-<table id="tablaDatos">
+    <table id="tablaDatos">
         <thead>
             <tr>
                 <th>Certificado</th>
                 <th>Nombre</th>
-		<th>Cedula</th>
-		<th>Curso</th>
+                <th>Curso</th>
                 <th>Horas</th>
-		<th>Fecha</th>
+                <th>Fecha</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-		<td>MCEAD001</td>
-                <td>Juan Pérez</td>
-                <td>16129903</td>
-                <td>METODOLOGÍA Y USO DE CLASSROOM EN EDUCACIÓN A DISTANCIA</td>
-                <td>8</td>
-		<td>2024-03-18</td>
-            </tr>
-		<tr>
-		<td>MCEAD002</td>
-                <td>Andrés López</td>
-                <td>16129903</td>
-                <td>METODOLOGÍA Y USO DE CLASSROOM EN EDUCACIÓN A DISTANCIA</td>
-                <td>8</td>
-		<td>2024-03-18</td>
-            </tr>
-		<tr>
-		<td>MCEAD003</td>
-                <td>María Rodríguez</td>
-                <td>16129903</td>
-                <td>METODOLOGÍA Y USO DE CLASSROOM EN EDUCACIÓN A DISTANCIA</td>
-                <td>8</td>
-		<td>2024-03-18</td>
-            </tr>
-		<tr>
-		<td>MCEAD004</td>
-                <td>Pedro Gómez</td>
-                <td>16129903</td>
-                <td>METODOLOGÍA Y USO DE CLASSROOM EN EDUCACIÓN A DISTANCIA</td>
-                <td>8</td>
-		<td>2024-03-18</td>
-            </tr>
-		<tr>
-		<td>MCEAD005</td>
-                <td>Valeria Azuaje</td>
-                <td>16129903</td>
-                <td>METODOLOGÍA Y USO DE CLASSROOM EN EDUCACIÓN A DISTANCIA</td>
-                <td>8</td>
-		<td>2024-03-18</td>
-            </tr>
-            <!-- Agrega más filas de datos aquí -->
+            <!-- Aquí se llenarán los datos -->
         </tbody>
     </table>
+
+    <script>
+        // Datos ficticios (puedes obtenerlos de tu fuente real)
+        const datos = [
+            { certificado: 1, nombre: 'Juan Pérez', curso: 'Matemáticas', horas: 20, fecha: '2024-03-18' },
+            { certificado: 2, nombre: 'María Gómez', curso: 'Historia', horas: 15, fecha: '2024-03-19' },
+			{ certificado: 2, nombre: 'Luis Vargas', curso: 'Historia', horas: 15, fecha: '2024-03-19' },
+			{ certificado: 2, nombre: 'Veronica García', curso: 'Historia', horas: 15, fecha: '2024-03-19' },
+			{ certificado: 2, nombre: 'Laura Hoyo', curso: 'Historia', horas: 15, fecha: '2024-03-19' },
+			{ certificado: 2, nombre: 'Yohana Moreno', curso: 'Historia', horas: 15, fecha: '2024-03-19' },
+			{ certificado: 2, nombre: 'Javier Gales', curso: 'Historia', horas: 15, fecha: '2024-03-19' },
+			// ... más datos ...
+        ];
+
+        // Obtén la referencia al cuerpo de la tabla
+        const tablaBody = document.querySelector('#tablaDatos tbody');
+
+        // Llena la tabla con los datos
+        datos.forEach((dato) => {
+            const fila = document.createElement('tr');
+            fila.innerHTML = `
+                <td>${dato.certificado}</td>
+                <td>${dato.nombre}</td>
+                <td>${dato.curso}</td>
+                <td>${dato.horas}</td>
+                <td>${dato.fecha}</td>
+            `;
+            tablaBody.appendChild(fila);
+        });
+    </script>
 </body>
 </html>
