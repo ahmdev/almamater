@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda de Datos en Otra Página</title>
+    <!-- Agrega tus estilos CSS aquí si es necesario -->
+</head>
+<body>
+    <h1>Búsqueda de Datos en Otra Página</h1>
+    <form id="searchForm">
+        <label for="identificacion">Introduce la identificación:</label>
+        <input type="text" id="identificacion" placeholder="Escribe aquí">
+        <button type="button" onclick="buscarDatos()">Buscar</button>
+    </form>
+
+    <table id="tablaDatos">
+        <!-- Aquí se mostrarán los resultados -->
+    </table>
+
+    <script>
+        async function buscarDatos() {
+            const inputIdentificacion = document.getElementById("identificacion").value;
+            const url = "https://ahmdev.github.io/almamater/"; // Cambia la URL real
+
+            try {
+                const response = await fetch(url);
+                const data = await response.text(); // Obtener el contenido HTML de la página
+
+                // Crear un elemento temporal para extraer los datos
+                const tempDiv = document.createElement("div");
+                tempDiv.innerHTML = data;
+
+                // Buscar la tabla y sus filas
+                const tabla = tempDiv.querySelector("#tabla-datos"); // Cambia el selector según la estructura real
+                const filas = tabla.getElementsByTagName("tr");
+
+                for (let i = 0; i < filas.length; i++) {
+                    const identificacion = filas[i].getElementsByTagName("td")[0].textContent;
+                    if (identificacion === inputIdentificacion) {
+                        // Mostrar los valores correspondientes (nombre, curso, horas, fecha)
+                        const nombre = filas[i].getElementsByTagName("td")[1].textContent;
+                        const curso = filas[i].getElementsByTagName("td")[2].textContent;
+                        const horas = filas[i].getElementsByTagName("td")[3].textContent;
+                        const fecha = filas[i].getElementsByTagName("td")[4].textContent;
+
+                        console.log(`Nombre: ${nombre}, Curso: ${curso}, Horas: ${horas}, Fecha: ${fecha}`);
+                        // Puedes mostrar los valores en otro lugar de la página o como desees
+                        break; // Detener la búsqueda después de encontrar la identificación
+                    }
+                }
+            } catch (error) {
+                console.error("Error al obtener los datos:", error);
+            }
+        }
+    </script>
+</body>
+</html>
