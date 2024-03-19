@@ -2,55 +2,17 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabla de Datos</title>
-    <!-- Agrega tus estilos CSS aquí si es necesario -->
+    <title>Consulta de Certificados</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Tabla de Datos</h1>
-    <table id="tablaDatos">
-        <thead>
-            <tr>
-                <th>Certificado</th>
-                <th>Nombre</th>
-                <th>Curso</th>
-                <th>Horas</th>
-                <th>Fecha</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Aquí se llenarán los datos -->
-        </tbody>
-    </table>
+    <h1>Consulta de Certificados Alma Mater - UNA</h1>
+    <form action="consult.php" method="post">
+        <label for="id">Número de identificación:</label>
+        <input type="text" name="id" id="id" required>
+        <input type="submit" value="Consultar">
+    </form>
 
-    <script>
-        // Datos ficticios (puedes obtenerlos de tu fuente real)
-        const datos = [
-            { certificado: 'MCEAD001', nombre: 'Juan Pérez', curso: 'Matemáticas', horas: 20, fecha: '2024-03-18' },
-            { certificado: 'MCEAD002', nombre: 'María Gómez', curso: 'Historia', horas: 15, fecha: '2024-03-19' },
-	    { certificado: 'MCEAD003', nombre: 'Luis Vargas', curso: 'Historia', horas: 15, fecha: '2024-03-19' },
-	    { certificado: 'MCEAD004', nombre: 'Veronica García', curso: 'Historia', horas: 15, fecha: '2024-03-19' },
-			{ certificado: 'MCEAD005', nombre: 'Laura Hoyo', curso: 'Historia', horas: 15, fecha: '2024-03-19' },
-			{ certificado: 'MCEAD006', nombre: 'Yohana Moreno', curso: 'Historia', horas: 15, fecha: '2024-03-19' },
-			{ certificado: 'MCEAD007', nombre: 'Javier Gales', curso: 'Historia', horas: 15, fecha: '2024-03-19' },
-			// ... más datos ...
-        ];
-
-        // Obtén la referencia al cuerpo de la tabla
-        const tablaBody = document.querySelector('#tablaDatos tbody');
-
-        // Llena la tabla con los datos
-        datos.forEach((dato) => {
-            const fila = document.createElement('tr');
-            fila.innerHTML = `
-                <td>${dato.certificado}</td>
-                <td>${dato.nombre}</td>
-                <td>${dato.curso}</td>
-                <td>${dato.horas}</td>
-                <td>${dato.fecha}</td>
-            `;
-            tablaBody.appendChild(fila);
-        });
-    </script>
+    <div id="resultado"></div>
 </body>
 </html>
